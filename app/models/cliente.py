@@ -3,8 +3,8 @@ from pytz import timezone
 from app import db
 
 
-class Empresa(db.Model):
-    __tablename__ = 'empresa'
+class Cliente(db.Model):
+    __tablename__ = 'cliente'
 
     id = db.Column(db.Integer, primary_key=True)
     
