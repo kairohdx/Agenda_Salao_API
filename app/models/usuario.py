@@ -8,8 +8,9 @@ import uuid
 class Usuario(db.Model):
     __tablename__ = 'usuario'
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(255), nullable=False)
-    email = db.Column(db.String(255), nullable=False)
+    nome = db.Column(db.String(256), nullable=False)
+    nomeUsuario = db.Column(db.String(24), nullable=False, unique=True)
+    email = db.Column(db.String(256), nullable=False, unique=True)
     hashSenha = db.Column(db.Text)
     loginSocial = db.Column(db.Boolean, default=False)
 
