@@ -10,8 +10,8 @@ class Usuario(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     email = db.Column(db.String(255), nullable=False)
-    hash_senha = db.Column(db.Text)
-    login_social = db.Column(db.Boolean, default=False)
+    hashSenha = db.Column(db.Text)
+    loginSocial = db.Column(db.Boolean, default=False)
 
     dataHoraCriacao = db.Column(db.DateTime, default=datetime.now().astimezone(timezone('America/Sao_Paulo')))
 
