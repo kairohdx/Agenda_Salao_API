@@ -1,9 +1,19 @@
 from datetime import datetime
 from pytz import timezone
 from app import db, app
-from itsdangerous import (TimedJSONWebSignatureSerializer
-                          as Serializer, BadSignature, SignatureExpired)
 import uuid
+
+
+class Grupo(db.Model):
+    __tablename__ = 'grupo'
+    id = db.Column(db.Integer, primary_key=True)
+    nome = db.Column(db.String(256), nullable=False)
+
+    empresa_id = db.Column(db.Integer, db.ForeignKey('empresa.id'), nullable=False)
+    empresa = db.relationship('Empresa', backref=db.backref('grupos', lazy=True))
+
+    dataHoraCriacao = db.Column(db.DateTime, default=datetime.now().astimezone(timezone('America/Sao_Paulo')))
+
 
 class Usuario(db.Model):
     __tablename__ = 'usuario'
@@ -13,6 +23,13 @@ class Usuario(db.Model):
     email = db.Column(db.String(256), nullable=False, unique=True)
     hashSenha = db.Column(db.Text)
     loginSocial = db.Column(db.Boolean, default=False)
+    administrador = db.Column(db.Boolean, default=False)
+
+    empresa_id = db.Column(db.Integer, db.ForeignKey('empresa.id'), nullable=False)
+    empresa = db.relationship('Empresa', backref=db.backref('usuarios', lazy=True))
+
+    grupo_id = db.Column(db.Integer, db.ForeignKey('grupo.id'), nullable=False)
+    grupo = db.relationship('Grupo', backref=db.backref('usuarios', lazy=True))
 
     dataHoraCriacao = db.Column(db.DateTime, default=datetime.now().astimezone(timezone('America/Sao_Paulo')))
 
