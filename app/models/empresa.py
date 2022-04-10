@@ -19,6 +19,6 @@ class EmpresaLogo(db.Model):
     __tablename__ = 'empresaLogo'
 
     id = db.Column(db.Integer, primary_key=True)
-    data = db.Column(db.Blob)
+    data = db.Column(db.BLOB)
 
     dataHoraCriacao = db.Column(db.DateTime, default=datetime.now().astimezone(timezone('America/Sao_Paulo')))

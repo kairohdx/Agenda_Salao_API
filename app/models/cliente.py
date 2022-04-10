@@ -1,6 +1,4 @@
 from datetime import datetime
-from itsdangerous import (TimedJSONWebSignatureSerializer
-                          as Serializer, BadSignature, SignatureExpired)
 from pytz import timezone
 from app import db, app
 
