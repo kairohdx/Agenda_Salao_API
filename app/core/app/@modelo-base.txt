@@ -1,0 +1,14 @@
+from sqlalchemy.orm import Session
+
+from .....models. import 
+from .....schemas. import Create
+
+def get_(_id: int):
+    return db.query().filter(.id == _id).first()
+
+def create_(agenda: Create, funcionario_id):
+    db_obj = (**agenda.dict(), funcionario_id=funcionario_id)
+    db.add(db_obj)
+    db.commit()
+    db.refresh(db_obj)
+    return db_obj

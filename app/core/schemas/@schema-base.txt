@@ -1,0 +1,21 @@
+from datetime import datetime, timedelta
+from typing import Optional # para python 6.9- Optional[str] = None
+
+from pydantic import BaseModel
+
+
+class Base Base(BaseModel):
+    atributoPublico: str
+    atributoPublicoValorOpcinal: str | None = None
+
+
+class Base Create(Base Base):
+    atributoPrivadoInputado: str
+
+
+class Base (Base Base):
+    atributoPrivado: int
+    atributoPrivadoValorOpcinal: str | None = None
+
+    class Config:
+        orm_mode = True
